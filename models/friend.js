@@ -11,6 +11,10 @@ const friendSchema = new Schema({
       type: String,
       required: true
     },
+    favorite: {
+      type: Boolean,
+      required: false
+    },
     gender: {
       type: String,
       required: true
@@ -30,6 +34,18 @@ const friendSchema = new Schema({
     },
     phone3: {
       type: Number,
+      required: false
+    },
+    phoneType1: {
+      type: String,
+      required: true
+    },
+    phoneType2: {
+      type: String,
+      required: false
+    },
+    phoneType3: {
+      type: String,
       required: false
     },
 })

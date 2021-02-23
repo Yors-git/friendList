@@ -48,16 +48,20 @@ const createFriend = async (req, res, next) => {
 			new HttpError("Invalid inputs passed, please check your data", 422)
 		)
 	}
-	const { name, lastName, gender, marital, phone1, phone2, phone3 } = req.body
+	const { name, lastName, favorite, gender, marital, phone1, phone2, phone3, phoneType1, phoneType2, phoneType3 } = req.body
 	
 	const createdFriend = new Friend({
 		name,
 		lastName,
+    favorite,
 		gender,
 		marital,
     phone1,
     phone2,
-    phone3
+    phone3,
+		phoneType1,
+		phoneType2,
+		phoneType3
 	})
 
   Friend.create(createdFriend, (err, newlyCreated) => {
@@ -78,7 +82,7 @@ const updateFriend = async (req, res, next) => {
 			new HttpError("Invalid inputs passed, please check your data", 422)
 		)
 	}
-	const { name, lastName, gender, marital, phone1, phone2, phone3 } = req.body
+	const { name, lastName, favorite, gender, marital, phone1, phone2, phone3, phoneType1, phoneType2, phoneType3 } = req.body
 	const friendId = req.params.fid
 	let friend
 	try {
@@ -86,11 +90,15 @@ const updateFriend = async (req, res, next) => {
 	
 		friend.name = name
 		friend.lastName = lastName
+    friend.favorite = favorite
     friend.gender = gender
     friend.marital = marital
     friend.phone1 = phone1
     friend.phone2 = phone2
     friend.phone3 = phone3
+		friend.phoneType1 = phoneType1
+		friend.phoneType2 = phoneType2
+		friend.phoneType3 = phoneType3
 		friend.save()
 	} catch (err) {
 		const error = new HttpError(
