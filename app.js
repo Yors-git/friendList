@@ -16,7 +16,7 @@ app.use((req, res) => {
 	)
 	res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE")
 	next()
-})
+});
 
 app.use("/", friendRoutes);
 
